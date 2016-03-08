@@ -34,10 +34,15 @@ namespace ImdbWeb.Controllers
         public ViewResult MoviesByGenre(string genrename)
         {
             var db = new MovieDAL.ImdbContext();
+
+            //ViewData.Model = db.Movies
+            //    .Where(m => m.Genre.Name == genrename);
+
             ViewData.Model = from movie in db.Movies
                              where movie.Genre.Name == genrename
                              select movie;
-            return View();
+            ViewBag.GenreName = genrename;
+            return View("Index");
         }
     }
 }

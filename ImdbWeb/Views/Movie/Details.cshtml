@@ -4,47 +4,26 @@
 @{
     ViewBag.Title = Model.Title;
 }
-
 <h2>@Model.Title (@Model.ProductionYear)</h2>
 <p>@Model.OriginalTitle</p>
 <dl>
     <dt>Filmens lengde
     </dt>
     <dd>@Model.RunningLength</dd>
-    @*<dt>Regisører</dt>
+    <dt>Regisører</dt>
     <dd>@Html.PrettyJoin(Model.Directors)</dd>
     <dt>Produsenter</dt>
-    <dd>@Html.PrettyJoin(Model.Producers)</dd>*@
+    <dd>@Html.PrettyJoin(Model.Producers)</dd>
 </dl>
 
 <p>@Model.Description</p>
 
 <h3>Skuespillere</h3>
-<ul>
-    @foreach (var person in Model.Actors)
-    {
-        <li>
-            @Html.ActionLink(person.Name, "Details", "Person", new { id = person.PersonId }, null)
-        </li>
-    }
-</ul>
+@Html.Partial("_PersonList", Model.Actors)
 
-<h3>Produsenter</h3>
-<ul>
-    @foreach (var person in Model.Producers)
-    {
-        <li>
-            @Html.ActionLink(person.Name, "Details", "Person", new { id = person.PersonId }, null)
-        </li>
-    }
-</ul>
+@*<h3>Produsenter</h3>
+@Html.Partial("_PersonList", Model.Producers)
 
-<h3>Regisører</h3>
-<ul>
-    @foreach (var person in Model.Directors)
-    {
-        <li>
-            @Html.ActionLink(person.Name, "Details", "Person", new { id = person.PersonId }, null)
-        </li>
-    }
-</ul>
+<h3>Regissører</h3>
+@Html.Partial("_PersonList", Model.Directors)*@
+
