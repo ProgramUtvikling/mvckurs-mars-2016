@@ -6,27 +6,38 @@ using System.Web.Mvc;
 
 namespace ImdbWeb.Controllers
 {
+    [RoutePrefix("Movie")]
     public class MovieController : Controller
     {
-        // GET: Movie
-        public string Index()
+        public ViewResult Index()
         {
-            return "MovieController.Index()";
+            var db = new MovieDAL.ImdbContext();
+            ViewData.Model = db.Movies;
+            return View();
         }
 
-        public string Details(string id)
+        public ViewResult Details(string id)
         {
-            return $"MovieController.Details({id})";
+            var db = new MovieDAL.ImdbContext();
+            ViewData.Model = db.Movies.Find(id);
+            return View();
         }
 
-        public string Genres()
+        public ViewResult Genres()
         {
-            return "MovieController.Genres()";
+            var db = new MovieDAL.ImdbContext();
+            ViewData.Model = db.Genres;
+            return View();
         }
 
-        public string MoviesByGenre(string genrename)
+        [Route("Genre/{genrename}")]
+        public ViewResult MoviesByGenre(string genrename)
         {
-            return $"MovieController.MoviesByGenre({genrename})";
+            var db = new MovieDAL.ImdbContext();
+            ViewData.Model = from movie in db.Movies
+                             where movie.Genre.Name == genrename
+                             select movie;
+            return View();
         }
     }
 }

@@ -138,6 +138,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Styles.css" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
@@ -153,6 +154,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +163,15 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Movie\Details.cshtml" />
+    <Content Include="Views\Movie\Genres.cshtml" />
+    <Content Include="Views\Movie\MoviesByGenre.cshtml" />
+    <Content Include="Views\Person\Index.cshtml" />
+    <Content Include="Views\Movie\Index.cshtml" />
+    <Content Include="Views\Person\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -171,10 +182,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Home\" />
     <Folder Include="Views\Image\" />
-    <Folder Include="Views\Movie\" />
-    <Folder Include="Views\Person\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MovieDAL\MovieDAL.csproj">

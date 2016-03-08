@@ -13,14 +13,16 @@ namespace ImdbWeb
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute("Movies by genre route",
-                "Movie/Genre/{genrename}", new { Controller = "Movie", Action = "MoviesByGenre"});
+            routes.MapMvcAttributeRoutes();
 
-            routes.MapRoute("Person details route",
-                "Person/{id}", new { Controller = "Person", Action = "Details" }, new { id = @"\d+" });
+            //routes.MapRoute("Movies by genre route",
+            //    "Movie/Genre/{genrename}", new { Controller = "Movie", Action = "MoviesByGenre" });
 
-            routes.MapRoute("Cover image route",
-                "Image/{format}/{id}.jpg", new { Controller = "Image", Action = "CreateImage" });
+            //routes.MapRoute("Person details route",
+            //    "Person/{id}", new { Controller = "Person", Action = "Details" }, new {id = @"\d+"});
+
+            //routes.MapRoute("Cover image route",
+            //    "Image/{format}/{id}.jpg", new { Controller = "Image", Action = "CreateImage" });
 
             routes.MapRoute(
                 name: "Default",

@@ -6,24 +6,43 @@ using System.Web.Mvc;
 
 namespace ImdbWeb.Controllers
 {
+    [RoutePrefix("Person")]
     public class PersonController : Controller
     {
         // GET: Person
-        public string Actors()
+        public ViewResult Actors()
         {
-            return "PersonController.Actors";
+            var db = new MovieDAL.ImdbContext();
+            ViewData.Model = from person in db.Persons
+                             where person.ActedMovies.Any()
+                             select person;
+            return View("Index");
         }
-        public string Producers()
+
+        public ViewResult Producers()
         {
-            return "PersonController.Producers";
+            var db = new MovieDAL.ImdbContext();
+            ViewData.Model = from person in db.Persons
+                             where person.ProducedMovies.Any()
+                             select person;
+            return View("Index");
         }
-        public string Directors()
+
+        public ViewResult Directors()
         {
-            return "PersonController.Directors";
+            var db = new MovieDAL.ImdbContext();
+            ViewData.Model = from person in db.Persons
+                             where person.DirectedMovies.Any()
+                             select person;
+            return View("Index");
         }
-        public string Details(int id)
+
+        [Route("{id:int}")]
+        public ViewResult Details(int id)
         {
-            return $"PersonController.Details({id})";
+            var db = new MovieDAL.ImdbContext();
+            ViewData.Model = db.Persons.Find(id);
+            return View();
         }
     }
 }
