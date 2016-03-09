@@ -5,12 +5,34 @@
 
 <h2>Ingars Movie Database</h2>
 <ul>
-    <li>@Html.ActionLink("Alle filmer", "Index", "Movie")</li>
-    <li>@Html.ActionLink("Alle sjangre", "Genres", "Movie")</li>
+    <li>
+        @Html.ActionLink("Alle filmer", "Index", "Movie")
+        (@Html.ActionLink("xml", "Movies", "ImdbApi")/@Html.ActionLink("json", "Movies", "ImdbApi", new { fmt="json"}, null))
+    </li>
+    <li>
+        @Html.ActionLink("Alle sjangre", "Genres", "Movie")
+    </li>
 </ul>
 <ul>
-    <li>@Html.ActionLink("Skuespillere", "Actors", "Person")</li>
-    <li>@Html.ActionLink("Produsenter", "Producers", "Person")</li>
-    <li>@Html.ActionLink("Regisører", "Directors", "Person")</li>
+    <li>
+        @Html.ActionLink("Skuespillere", "Actors", "Person")
+    </li>
+    <li>
+        @Html.ActionLink("Produsenter", "Producers", "Person")
+    </li>
+    <li>
+        @Html.ActionLink("Regisører", "Directors", "Person")
+    </li>
+</ul>
+<ul>
+    <li>
+        @Html.ActionLink("Logg på", "Logon", "Account")
+    </li>
+    <li>
+        @Html.ActionLink("Admin", "Index", "Movie", new { area = "Admin"}, null)
+    </li>
+    <li>
+        @Html.ActionLink("Demo", "Demo")
+    </li>
 </ul>
 

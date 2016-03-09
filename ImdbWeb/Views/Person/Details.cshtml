@@ -20,6 +20,7 @@
             @foreach (var movie in movies)
             {
                 <li>
+                    @Cover.Thumb(movie)
                     @Html.ActionLink(movie.Title, "Details", "Movie", new { id = movie.MovieId }, null)
                 </li>
             }

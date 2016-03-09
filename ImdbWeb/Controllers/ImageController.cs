@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace ImdbWeb.Controllers
@@ -9,10 +10,36 @@ namespace ImdbWeb.Controllers
     public class ImageController : Controller
     {
         // GET: Image
-        [Route(@"Image/{format}/{id:regex(\d+)}.jpg")]
-        public string CreateImage(string format, string id)
+        [Route(@"Image/{format}/{id}.jpg")]
+        public ActionResult CreateImage(string format, string id)
         {
-            return $"ImageController.CreateImage({format}, {id})";
+            var relPath = $"~/App_Data/covers/{id}.jpg";
+            var absPath = Server.MapPath(relPath);
+
+            if (!System.IO.File.Exists(absPath))
+            {
+                return HttpNotFound();
+            }
+
+            var img = new WebImage(absPath);
+
+            switch (format.ToLower())
+            {
+                case "thumb":
+                    img.Resize(100, 1000)
+                        .Write();
+                    return new EmptyResult();
+
+                case "medium":
+                    img.Resize(300, 3000)
+                        .AddTextWatermark("Ingars Movie Database")
+                        .AddTextWatermark("Ingars Movie Database", "White", padding: 7)
+                        .Write();
+                    return new EmptyResult();
+
+                default:
+                    return HttpNotFound();
+            }
         }
     }
 }

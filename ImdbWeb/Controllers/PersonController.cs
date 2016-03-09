@@ -8,16 +8,15 @@ using System.Web.Mvc;
 namespace ImdbWeb.Controllers
 {
     [RoutePrefix("Person")]
-    public class PersonController : Controller
+    public class PersonController : ImdbControllerBase
     {
         // GET: Person
         public ViewResult Actors()
         {
-            var db = new MovieDAL.ImdbContext();
             ViewData.Model = new PersonIndexModel
             {
                 Title = "Skuespillere",
-                Persons = from person in db.Persons
+                Persons = from person in Db.Persons
                           where person.ActedMovies.Any()
                           select person
             };
@@ -26,11 +25,10 @@ namespace ImdbWeb.Controllers
 
         public ViewResult Producers()
         {
-            var db = new MovieDAL.ImdbContext();
             ViewData.Model = new PersonIndexModel
             {
                 Title = "Produsenter",
-                Persons = from person in db.Persons
+                Persons = from person in Db.Persons
                           where person.ProducedMovies.Any()
                           select person
             };
@@ -39,11 +37,10 @@ namespace ImdbWeb.Controllers
 
         public ViewResult Directors()
         {
-            var db = new MovieDAL.ImdbContext();
             ViewData.Model = new PersonIndexModel
             {
                 Title = "Regisører",
-                Persons = from person in db.Persons
+                Persons = from person in Db.Persons
                           where person.DirectedMovies.Any()
                           select person
             };
@@ -53,8 +50,7 @@ namespace ImdbWeb.Controllers
         [Route("{id:int}")]
         public ViewResult Details(int id)
         {
-            var db = new MovieDAL.ImdbContext();
-            ViewData.Model = db.Persons.Find(id);
+            ViewData.Model = Db.Persons.Find(id);
             return View();
         }
     }

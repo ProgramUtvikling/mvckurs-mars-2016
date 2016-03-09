@@ -1,11 +1,12 @@
-﻿@using ImdbWeb.Helpers
-@model MovieDAL.Movie
+﻿@model Movie
 
 @{
     ViewBag.Title = Model.Title;
 }
 <h2>@Model.Title (@Model.ProductionYear)</h2>
 <p>@Model.OriginalTitle</p>
+
+@Cover.Medium(Model)
 <dl>
     <dt>Filmens lengde
     </dt>
@@ -19,11 +20,12 @@
 <p>@Model.Description</p>
 
 <h3>Skuespillere</h3>
-@Html.Partial("_PersonList", Model.Actors)
-
-@*<h3>Produsenter</h3>
-@Html.Partial("_PersonList", Model.Producers)
-
-<h3>Regissører</h3>
-@Html.Partial("_PersonList", Model.Directors)*@
+<ul>
+    @foreach (var person in Model.Actors)
+    {
+        <li>
+            @Html.ActionLink(person.Name, "Details", "Person", new { id = person.PersonId }, null)
+        </li>
+    }
+</ul>
 

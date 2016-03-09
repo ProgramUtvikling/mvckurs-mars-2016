@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImdbWeb.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,39 +7,43 @@ using System.Web.Mvc;
 
 namespace ImdbWeb.Controllers
 {
+    //[Authorize]
     [RoutePrefix("Movie")]
-    public class MovieController : Controller
+    public class MovieController : ImdbControllerBase
     {
+        [OutputCache(CacheProfile = "Long")]
         public ViewResult Index()
         {
-            var db = new MovieDAL.ImdbContext();
-            ViewData.Model = db.Movies;
+            ViewData.Model = Db.Movies;
             return View();
         }
 
-        public ViewResult Details(string id)
+        public ActionResult Details(string id)
         {
-            var db = new MovieDAL.ImdbContext();
-            ViewData.Model = db.Movies.Find(id);
+            var movie = Db.Movies.Find(id);
+            if(movie == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewData.Model = movie;
             return View();
         }
 
         public ViewResult Genres()
         {
-            var db = new MovieDAL.ImdbContext();
-            ViewData.Model = db.Genres;
+            ViewData.Model = Db.Genres;
             return View();
         }
 
+        [OutputCache(CacheProfile = "Short")]
         [Route("Genre/{genrename}")]
         public ViewResult MoviesByGenre(string genrename)
         {
-            var db = new MovieDAL.ImdbContext();
-
-            //ViewData.Model = db.Movies
+            //ViewData.Model = Db.Movies
             //    .Where(m => m.Genre.Name == genrename);
 
-            ViewData.Model = from movie in db.Movies
+            ViewData.Model = from movie in Db.Movies
                              where movie.Genre.Name == genrename
                              select movie;
             ViewBag.GenreName = genrename;
