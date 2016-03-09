@@ -1,4 +1,4 @@
-﻿
+﻿@model ImdbWeb.Models.AccountModels.LogonModel
 @{
     ViewBag.Title = "Logon";
 }
@@ -6,14 +6,22 @@
 <h2>Logg på</h2>
 
 
-<form method="post">
-    <label for="username">Brukernavn:</label>
-    <input type="text" name="username" id="username" value="" />
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Username)
+    @Html.EditorFor(m => m.Username)
+    @Html.ValidationMessageFor(m => m.Username)
     <br />
-    <label for="password">Passord:</label>
-    <input type="password" name="password" id="password" value="" />
+    @Html.LabelFor(m => m.Password)
+    @Html.EditorFor(m => m.Password)
+    @Html.ValidationMessageFor(m => m.Password)
+    <br />
+    @Html.EditorFor(m => m.RememberMe)
+    @Html.LabelFor(m => m.RememberMe)
+    @Html.ValidationMessageFor(m => m.RememberMe)
     <br />
     <button>Logg på</button>
-</form>
+}
 
+@Html.ValidationSummary(true)
 

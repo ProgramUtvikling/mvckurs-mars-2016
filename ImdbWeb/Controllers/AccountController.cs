@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImdbWeb.Models.AccountModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,17 +18,22 @@ namespace ImdbWeb.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Logon(string username, string password, string returnUrl)
+        public ActionResult Logon(LogonModel model, string returnUrl)
         {
-            if(username=="arjan" && password == "pass")
+            if (ModelState.IsValid)
             {
-                FormsAuthentication.SetAuthCookie(username, false);
-                if (string.IsNullOrWhiteSpace(returnUrl))
+                if (model.Username == "arjan" && model.Password == "pass")
                 {
-                    return View("LoggedOn");
+                    FormsAuthentication.SetAuthCookie(model.Username, model.RememberMe);
+                    if (string.IsNullOrWhiteSpace(returnUrl))
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                    return Redirect(returnUrl);
                 }
 
-                return Redirect(returnUrl);
+                ModelState.AddModelError("", "Brukernavn og/eller passord er feil...");
             }
 
             return View();
