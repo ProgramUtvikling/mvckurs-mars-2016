@@ -26,8 +26,7 @@ namespace ImdbWeb.Controllers
             switch (format.ToLower())
             {
                 case "thumb":
-                    img.Resize(100, 1000)
-                        .Write();
+                    img.Resize(100, 1000).Write();
                     return new EmptyResult();
 
                 case "medium":
