@@ -8,11 +8,11 @@ namespace MovieDAL
 {
 	public class ImdbContext : DbContext
 	{
-		public IDbSet<Movie> Movies { get; set; }
-		public IDbSet<Genre> Genres { get; set; }
-		public IDbSet<Person> Persons { get; set; }
-		public IDbSet<Comment> Comments { get; set; }
-		public IDbSet<Rating> Ratings { get; set; }
+		public DbSet<Movie> Movies { get; set; }
+		public DbSet<Genre> Genres { get; set; }
+		public DbSet<Person> Persons { get; set; }
+		public DbSet<Comment> Comments { get; set; }
+		public DbSet<Rating> Ratings { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{

@@ -750,6 +750,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="App_Code\Cover.cshtml" />
+    <Content Include="Views\Account\IsAuth.cshtml" />
+    <Content Include="Views\Account\IsNotAuth.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
