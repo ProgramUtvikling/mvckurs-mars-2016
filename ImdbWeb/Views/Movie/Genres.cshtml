@@ -7,7 +7,7 @@
 <h2>Sjangre</h2>
 
 <ul>
-    @foreach (var genre in Model)
+    @foreach (var genre in Model.OrderBy(g => g.Name))
     {
         <li>
             @Html.ActionLink(genre.Name, "MoviesByGenre", new { genrename = genre.Name})

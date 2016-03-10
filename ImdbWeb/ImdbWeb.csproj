@@ -714,6 +714,9 @@
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\Movie\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Movie\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Movie\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Movie\Edit.cshtml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -726,7 +729,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\MovieController.cs" />
-    <Compile Include="Areas\Admin\Models\MovieModels\MovieIndexModel.cs" />
+    <Compile Include="Areas\Admin\Models\MovieModels\EditModel.cs" />
+    <Compile Include="Areas\Admin\Models\MovieModels\DeleteModel.cs" />
+    <Compile Include="Areas\Admin\Models\MovieModels\CreateModel.cs" />
+    <Compile Include="Areas\Admin\Models\MovieModels\IndexModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
@@ -771,6 +777,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Shared\DisplayTemplates\Duration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

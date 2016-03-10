@@ -6,7 +6,7 @@
 <h2>Index</h2>
 <h3>@ViewBag.GenreName</h3>
 <ul>
-    @foreach (var movie in Model)
+    @foreach (var movie in Model.OrderBy(m => m.Title))
     {
         <li>
             @Html.ActionLink(movie.Title, "Details", new { id=movie.MovieId })
