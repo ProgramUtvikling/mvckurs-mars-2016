@@ -1,6 +1,10 @@
-﻿body {
+﻿@import url('Validation.css');
+
+body {
 	font-family: sans-serif;
 	background: linear-gradient(lightgray 0, transparent 100%) no-repeat;
 	background-size: 100% 70px;
 	padding: 0;
 }
+
+

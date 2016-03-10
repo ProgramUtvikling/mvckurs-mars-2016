@@ -118,6 +118,18 @@ namespace ImdbWeb.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult CheckIdRemote(string movieId)
+        {
+            if (Db.Movies.Any(m => m.MovieId == movieId))
+            {
+                return Json("Filmen er allerede registrert (remote)");
+            }
+
+            return Json(true);
+
+        }
+
         public async Task<ActionResult> Delete(string id)
         {
             var movie = await Db.Movies.FindAsync(id);
