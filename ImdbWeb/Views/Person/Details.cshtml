@@ -12,16 +12,19 @@
 
 @helper MovieList(IEnumerable<MovieDAL.Movie> movies, string title)
 {
+    var options = new AjaxOptions { UpdateTargetId = "popup",OnBegin="dimBackground", OnFailure= "resetBackground", OnSuccess="showPopup" };
+
+
     if (movies.Any())
     {
 
-        <h3>@title (fra helper) </h3>
+        <h3>@title</h3>
         <ul>
             @foreach (var movie in movies)
             {
                 <li>
                     @Cover.Thumb(movie)
-                    @Html.ActionLink(movie.Title, "Details", "Movie", new { id = movie.MovieId }, null)
+                    @Ajax.ActionLink(movie.Title, "Details", "Movie", new { id = movie.MovieId }, options)
                 </li>
             }
         </ul>

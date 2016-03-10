@@ -21,12 +21,12 @@ namespace ImdbWeb.Controllers
         }
 
         [HttpPost]
-        public ViewResult Demo(DemoModel model)
+        public ActionResult Demo(DemoModel model)
         {
             model.Artikkel = Sanitizer.GetSafeHtmlFragment(model.Artikkel);
 
             ViewData.Model = model;
-            return View("DemoResult");
+            return PartialView("DemoResult");
         }
     }
 

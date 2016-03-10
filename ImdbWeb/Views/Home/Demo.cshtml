@@ -6,10 +6,14 @@
 
 <h2>Demo</h2>
 
-@using (Html.BeginForm())
+@using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "cph" }))
 {
     @Html.EditorForModel()
     <button>Submit</button>
 }
 
-
+<hr />
+<div id="cph">
+    tomt
+</div>
+<hr />

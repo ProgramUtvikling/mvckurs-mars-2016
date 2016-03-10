@@ -713,7 +713,10 @@
     <Content Include="App_Data\covers\8717418314637.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\popup.css" />
+    <Content Include="scripts\popup.js" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Validation.css" />
     <Content Include="Content\Styles.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

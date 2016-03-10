@@ -29,6 +29,10 @@ namespace ImdbWeb.Controllers
             }
 
             ViewData.Model = movie;
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView();
+            }
             return View();
         }
 
