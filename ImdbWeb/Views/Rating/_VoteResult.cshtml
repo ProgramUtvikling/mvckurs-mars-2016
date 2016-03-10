@@ -1,0 +1,12 @@
+﻿@model ImdbWeb.Models.RatingModels.VoteResultModel
+@{
+    ViewBag.Title = "_VoteResult";
+}
+
+<p>
+    Takk for at du stemte. Du ga @Model.YourVote.
+    @if (Model.VoteCount > 3)
+    {
+        @:Gjennomsnitt etter @Model.VoteCount stemmer er @Model.AverageVote.ToString("f1").
+    }
+</p>

@@ -6,10 +6,22 @@
 <h2>@Model.Title (@Model.ProductionYear)</h2>
 <p>@Model.OriginalTitle</p>
 
+<section id="voting">
+    @using (Ajax.BeginForm("Vote", "Rating", new { id = Model.MovieId }, new AjaxOptions { UpdateTargetId = "voting" }))
+    {
+        <text>
+            @Html.AntiForgeryToken()
+            Gi din stemme: @Html.DropDownList("vote", new SelectList(new[] { 1, 2, 3, 4, 5 }), "-- velg --")
+            <button>Send inn!</button>
+        </text>
+    }
+</section>
+
 @Cover.Medium(Model)
 
 <dl>
-    <dt>Filmens lengde
+    <dt>
+        Filmens lengde
     </dt>
     <dd>@Model.RunningLength</dd>
     <dt>Regisører</dt>
@@ -29,4 +41,29 @@
         </li>
     }
 </ul>
+
+<section id="commenting">
+    @using (Ajax.BeginForm("Comment", new { id = Model.MovieId }, new AjaxOptions
+    {
+        UpdateTargetId = "commenting",
+        LoadingElementId = "waiting",
+        InsertionMode = InsertionMode.InsertAfter
+        //,OnSuccess = "$('#commenting>form')[0].reset();"
+    }))
+    {
+        <text>
+            @Html.AntiForgeryToken()
+            @Html.TextBox("author") sier @Html.TextBox("headline")
+            <br />
+            @Html.TextArea("body", new { rows = 4, cols = 40 })
+            <br />
+            <button>Legg inn!</button>
+        </text>
+    }
+
+    @foreach (var comment in Model.Comments)
+    {
+        @Html.Partial("_Comment", comment)
+    }
+</section>
 

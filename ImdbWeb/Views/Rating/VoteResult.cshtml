@@ -1,0 +1,7 @@
+﻿@model ImdbWeb.Models.RatingModels.VoteResultModel
+@{
+    ViewBag.Title = "Takk";
+}
+@Html.Partial("_VoteResult")
+
+@Html.ActionLink("Tilbake til filmen", "Details", "Movie", new { id = Model.MovieId }, null)

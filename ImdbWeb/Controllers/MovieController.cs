@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using MovieDAL;
 
 namespace ImdbWeb.Controllers
 {
@@ -57,5 +58,33 @@ namespace ImdbWeb.Controllers
             ViewBag.GenreName = genrename;
             return View("Index");
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Comment(string id, string author, string body)
+        {
+            var movie = await Db.Movies.FindAsync(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+
+            var comment = new Comment
+            {
+                Author = author,
+                Body = body
+            };
+            movie.Comments.Add(comment);
+            await Db.SaveChangesAsync();
+
+            ViewData.Model = comment;
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_Comment");
+            }
+            return RedirectToAction("Details", "Movie", new { id });
+        }
+
     }
 }

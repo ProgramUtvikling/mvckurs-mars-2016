@@ -759,6 +759,7 @@
     <Compile Include="Controllers\ImdbControllerBase.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Filters\TimingFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -766,6 +767,7 @@
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Models\AccountModels\LogonModel.cs" />
     <Compile Include="Models\PersonModels\PersonIndexModel.cs" />
+    <Compile Include="Models\RatingModels\VoteResultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -798,6 +800,9 @@
     <Content Include="Views\Shared\DisplayTemplates\Duration.cshtml" />
     <Content Include="Views\Home\Demo.cshtml" />
     <Content Include="Views\Home\DemoResult.cshtml" />
+    <Content Include="Views\Rating\VoteResult.cshtml" />
+    <Content Include="Views\Rating\_VoteResult.cshtml" />
+    <Content Include="Views\Movie\_Comment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
