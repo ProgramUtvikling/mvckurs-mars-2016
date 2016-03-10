@@ -17,6 +17,7 @@ namespace ImdbWeb.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         [AllowAnonymous]
         public ActionResult Logon(LogonModel model, string returnUrl)
         {

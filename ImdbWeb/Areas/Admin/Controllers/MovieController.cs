@@ -33,6 +33,7 @@ namespace ImdbWeb.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(CreateModel model)
         {
             if (ModelState.IsValid)
@@ -79,6 +80,7 @@ namespace ImdbWeb.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(string id, EditModel model)
         {
             if (ModelState.IsValid)
@@ -135,7 +137,9 @@ namespace ImdbWeb.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Delete(string id, string søppel)
+        [ValidateAntiForgeryToken]
+        [ActionName("Delete")]
+        public async Task<ActionResult> DeleteConfirmed(string id)
         {
             var movie = await Db.Movies.FindAsync(id);
             if (movie == null)

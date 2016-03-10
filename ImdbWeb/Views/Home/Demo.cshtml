@@ -1,0 +1,15 @@
+﻿@model ImdbWeb.Controllers.DemoModel
+
+@{
+    ViewBag.Title = "Demo";
+}
+
+<h2>Demo</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+    <button>Submit</button>
+}
+
+
