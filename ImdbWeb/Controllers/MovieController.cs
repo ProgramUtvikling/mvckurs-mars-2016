@@ -61,8 +61,10 @@ namespace ImdbWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Comment(string id, string author, string body)
+        public async Task<ActionResult> Comment(string id, string author, string headline, string body)
         {
+            await Task.Delay(3000);
+
             var movie = await Db.Movies.FindAsync(id);
             if (movie == null)
             {
@@ -72,6 +74,7 @@ namespace ImdbWeb.Controllers
             var comment = new Comment
             {
                 Author = author,
+                Headline = headline,
                 Body = body
             };
             movie.Comments.Add(comment);

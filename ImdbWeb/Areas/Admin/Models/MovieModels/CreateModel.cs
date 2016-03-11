@@ -13,8 +13,8 @@ namespace ImdbWeb.Areas.Admin.Models.MovieModels
         [Display(Name = "EAN kode")]
         [Required]
         [MaxLength(30)]
-        [CustomValidation(typeof(MovieController), nameof(MovieController.CheckId))]
-        [Remote("CheckIdRemote", "Movie", HttpMethod = "POST")]
+        //[CustomValidation(typeof(MovieController), nameof(MovieController.CheckId))]
+        [Remote(nameof(MovieController. CheckIdRemote), "Movie", HttpMethod = "POST")]
         public string MovieId { get; set; }
 
         [Display(Name = "Tittel")]

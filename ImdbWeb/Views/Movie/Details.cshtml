@@ -48,7 +48,8 @@
         UpdateTargetId = "commenting",
         LoadingElementId = "waiting",
         InsertionMode = InsertionMode.InsertAfter
-        //,OnSuccess = "$('#commenting>form')[0].reset();"
+                        ,
+        OnSuccess = "$('#commenting>form')[0].reset();"
     }))
     {
         <text>
@@ -60,10 +61,11 @@
             <button>Legg inn!</button>
         </text>
     }
-
+    <div id="waiting" style="display: none;">
+        <img src="~/Content/ajax-loader.gif" />
+    </div>
     @foreach (var comment in Model.Comments)
     {
         @Html.Partial("_Comment", comment)
     }
 </section>
-
