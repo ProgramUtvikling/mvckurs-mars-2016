@@ -715,6 +715,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\popup.css" />
+    <Content Include="HtmlPage1.html" />
+    <Content Include="scripts\knockout-3.4.0.debug.js" />
+    <Content Include="scripts\knockout-3.4.0.js" />
     <Content Include="scripts\popup.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Validation.css" />

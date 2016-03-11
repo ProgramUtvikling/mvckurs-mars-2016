@@ -11,4 +11,32 @@ body {
     height: 4em;
 }
 
+ul{
+    /*transform: rotate(1deg);*/
+}
 
+li{
+    transition: 1s;
+    padding: .3em;
+    border: 1px solid black;
+}
+li+li{
+    border-top: none;
+}
+
+
+
+li:hover{
+    transition: 0;
+    background-color: red;
+    /*transform: rotate(40deg);
+    transform-origin: center left;*/
+}
+
+:focus{
+    border: thin solid red;
+}
+
+:target{
+    background-color: lightblue;
+}

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <h1>Liste over filmer</h1>
+    <button id="btn">Last inn filmer</button>
+
+    <table>
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>title</td>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: $data">
+            <tr>
+                <td data-bind="text: id"></td>
+                <td data-bind="text: title"></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <script src="scripts/jquery-1.12.0.min.js"></script>
+    <script src="scripts/knockout-3.4.0.js"></script>
+    <script>
+
+        $("#btn").click(function () {
+
+            var promise = $.get("/imdbapi/movies?fmt=json")
+            promise.then(function (data) {
+
+                ko.applyBindings(data);
+
+            });
+        });
+
+    </script>
+</body>
+</html>

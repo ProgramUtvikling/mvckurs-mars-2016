@@ -23,8 +23,19 @@
         @foreach (var person in group.Persons)
         {
             <li>
-                @Html.ActionLink(person.Name, "Details", "Person", new { id=person.PersonId }, null)
+                @Html.ActionLink(person.Name, "Details", "Person", new { id = person.PersonId }, null)
             </li>
         }
     </ul>
+}
+
+@section scripts{
+    <script>
+
+        $("h3").click(function () {
+            $("h3").next().slideUp();
+            $(this).next().slideDown();
+        }).next().hide();
+
+    </script>
 }
